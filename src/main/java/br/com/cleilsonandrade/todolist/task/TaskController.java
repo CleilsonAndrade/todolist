@@ -15,6 +15,8 @@ public class TaskController {
 
   @PostMapping("/")
   public TaskModel create(@RequestBody TaskModel taskModel) {
+
+    System.out.println("Esta no controle");
     var task = this.taskRepository.save(taskModel);
 
     return task;
