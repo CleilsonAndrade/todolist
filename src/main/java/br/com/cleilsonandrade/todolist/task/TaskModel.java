@@ -17,13 +17,15 @@ public class TaskModel {
   @Id
   @GeneratedValue(generator = "UUID")
   private UUID id;
-  private String description;
 
   @Column(length = 50)
   private String title;
+
+  private String description;
+  private String priority;
+
   private LocalDateTime startAt;
   private LocalDateTime endAt;
-  private String priority;
 
   private UUID idUser;
 
