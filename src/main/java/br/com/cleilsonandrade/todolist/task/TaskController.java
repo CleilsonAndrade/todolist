@@ -27,8 +27,9 @@ public class TaskController {
 
     var currentDate = LocalDateTime.now();
 
-    if (currentDate.isAfter(taskModel.getStartAt())) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The start date must be greater than the current date");
+    if (currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body("The start date or end date must be greater than the current date");
     }
 
     var task = this.taskRepository.save(taskModel);
