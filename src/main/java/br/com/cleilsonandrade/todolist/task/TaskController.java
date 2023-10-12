@@ -32,6 +32,11 @@ public class TaskController {
           .body("The start date or end date must be greater than the current date");
     }
 
+    if (taskModel.getStartAt().isAfter(taskModel.getEndAt())) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body("The start date must be less than the end date");
+    }
+
     var task = this.taskRepository.save(taskModel);
 
     return ResponseEntity.status(HttpStatus.OK).body(task);
